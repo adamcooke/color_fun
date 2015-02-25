@@ -1,14 +1,14 @@
 # Color Fun
 
-This gem provides a few useful methods associated with colors for use in 
+This gem provides a few useful methods associated with colors for use in
 web-based applications. This was all written for a little app we're working on.
 
 ## Example Usage
 
 ```ruby
 # Initializing colors
-red   = ColorFun::RBG.new(255,0,0)         # =>  #<ColorFun::RGB:0x007f9 @red=255, @green=0, @blue=0>
-red   = ColorFun::RBG.from_hex('ff0000')   # =>  #<ColorFun::RGB:0x007f9 @red=255, @green=0, @blue=0>
+red   = ColorFun::RGB.new(255,0,0)         # =>  #<ColorFun::RGB:0x007f9 @red=255, @green=0, @blue=0>
+red   = ColorFun::RGB.from_hex('ff0000')   # =>  #<ColorFun::RGB:0x007f9 @red=255, @green=0, @blue=0>
 
 # Access colors
 red.red                                 # => 255
