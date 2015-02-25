@@ -1,6 +1,6 @@
 module ColorFun
   class RGB
-    
+
     # Accessors for accessing the individual colors
     attr_accessor :red, :green, :blue
 
@@ -16,12 +16,12 @@ module ColorFun
 
     # Return whether or not the color is visibly dark to the human eye?
     def dark?
-      perceived_brightness < 160
+      perceived_brightness <= 160
     end
 
     # Return whether or not the color is visibly light to the human eye?
     def light?
-      perceived_brightness > 161
+      !dark?
     end
 
     # Return a new color object for a lighter version of this color
@@ -29,25 +29,25 @@ module ColorFun
       percent = (percent / 100.0)
       RGB.new((255 - @red) * percent + @red, (255 - @green) * percent + @green, (255 - @blue) * percent + @blue)
     end
-    
+
     # Return a new color object for a darker version of this color
     def darker(percent = 50)
       percent = ((100 - percent) / 100.0)
       RGB.new(@red * percent, @green * percent, @blue * percent)
     end
-    
+
     # Return a hex string for this color
     def hex
       [@red, @green, @blue].map do |c|
         c.to_s(16).rjust(2, '0')
       end.join
     end
-    
+
     # Return a HSL version of this color
     def hsl
       @hsl ||= HSL.from_rbg(@red, @green, @blue)
     end
-    
+
     # Initialize a new color object for a given hex code
     def self.from_hex(hex)
       self.new(*hex.scan(/../).map { |i| i.to_i(16) })
